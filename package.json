@@ -1,0 +1,25 @@
+{
+  "name": "TodoOrNot",
+  "version": "1.0.0",
+  "description": "Todo Or Not",
+  "main": "logic.js",
+  "scripts": {
+    "test": "tape ./test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN3/TodoOrNot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN3/TodoOrNot/issues"
+  },
+  "homepage": "https://github.com/FACN3/TodoOrNot#readme",
+  "devDependencies" :{
+      "nyc": "^11.3.0",
+      "tap-spec": "^4.1.1",
+      "tape": "^4.8.0"
+    }
+  }
