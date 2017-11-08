@@ -13,6 +13,17 @@ var state = [
   },
 ];
 
+var deleteState = [
+  {
+    id: -3, title: 'first todo', description: 'first todo'
+    , complete: false
+  },
+  {
+    id: -2, title: 'second todo', description: 'second todo'
+    , complete: false
+  },
+];
+
 var state1 = [
 {
     id: -3, title: 'first todo', description: 'first todo'
@@ -39,11 +50,21 @@ var newState = {
 };
 
 var test = require('tape');
-var logic = require('./logic');
+var todoFunctions = require('./logic');
 
-tape('adding one object to existing array', function(t) {
+test('adding one object to existing array', function(t) {
   var actual=todoFunctions.addTodo(state, newState);
-  var expected = state1
-  t.equal(actual,expected,'addTodo array should have 4 objects');
+  var expected = newState
+  // t.equal(actual,expected,'addTodo array should have 4 objects');
+  t.equal(actual[actual.length-1],newState,'addTodo array should have 4 objects')
+  t.end();
+});
+
+// DELETE test
+
+test('deleting last array from existing object', function(t){
+  var actual=todoFunctions.deleteTodo(state,-1);
+  var expected=deleteState.length
+  t.equal(actual.length,2,'deleteTodo array should have 2 objects')
   t.end();
 });
