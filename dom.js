@@ -5,7 +5,7 @@
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-
+  console.log
   var state = [
     {
       id: -3, title: 'first todo', description: 'first todo'
@@ -21,44 +21,89 @@
     },
   ]; // this is our initial todoList
 
-  // This function takes a todo, 
+  // This function takes a todo,
   //it returns the DOM node representing that todo
   var createTodoNode = function (todo) {
     var todoNode = document.createElement('li');
-    // you will need to use addEventListener
+    //add id??
 
+    //add checkbox (event listener)
+    var checkbox = document.createElement('input');
+    checkbox.type ='checkbox';
+    checkbox.classList.add('checkbox');
+    todoNode.appendChild(checkbox);
     // add title
+    var nodeTitle = document.createElement('h2');
+    nodeTitle.classList.add('todoTitle');
+    var titleText = document.createTextNode(todo.title);
+    nodeTitle.appendChild(titleText);
+    todoNode.appendChild(nodeTitle);
+
 
     // add span holding description
+    var addDetails = document.createElement('details');
+    var addDescription = document.createTextNode(todo.description);
 
-    // add edit button
-    
-    // this adds the delete button
-    var deleteButtonNode = document.createElement('button');
-    deleteButtonNode.addEventListener('click', function (event) {
+
+    var editButton = document.createElement('button');
+    editButton.classList.add('editButton');
+    var editButtonText= document.createTextNode('edit');
+    editButton.appendChild(editButtonText);
+      //add editButton functionality
+
+    var deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteButton');
+    var deleteButtonText = document.createTextNode('delete');
+    deleteButton.appendChild(deleteButtonText);
+    console.log(todo);
+    deleteButton.addEventListener('click', function (event) {
+
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(deleteButtonNode);
+    //add deleteButton functionality
 
+    addDetails.appendChild(addDescription);
+    addDetails.appendChild(editButton);
+    addDetails.appendChild(deleteButton);
+    todoNode.appendChild(addDetails);
+    // this adds the delete button. PROVIDED FUNCTION
+    // var deleteButtonNode = document.createElement('button');
+    // deleteButtonNode.addEventListener('click', function (event) {
+    //   var newState = todoFunctions.deleteTodo(state, todo.id);
+    //   update(newState);
+    // });
+    // addDetails.appendChild(deleteButtonNode);
     // add markTodo button
-
     // add classes for css
-
     return todoNode;
   };
+
+  // (function foo() {
+  // })()
+  // var foo = (function(){
+  //
+  // })()
+  // foo;
 
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function (event) {
+      event.preventDefault();
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
       // what is inside event.target?
+      var title = document.getElementById('formTitle').value; // event.target ....
+      document.getElementById('formTitle').value = '';
+      var description = document.getElementById('formDescription').value;
+      document.getElementById('formDescription').value = '';
+      console.log(title + description);
 
-      var description = '?'; // event.target ....
+      var newArray = {id : todoFunctions.generateId(), title : title,
+      description : description, complete: false};
 
       // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      var newState = todoFunctions.addTodo(state,newArray); // ?? change this!
       update(newState);
     });
   }
