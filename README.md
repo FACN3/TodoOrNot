@@ -1,2 +1,4 @@
 # TodoOrNot
-Todo Or Not
+## What the code about:
+
+# I HAVE NO IDEA
