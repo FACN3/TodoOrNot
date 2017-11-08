@@ -1,5 +1,5 @@
-#### Team name:
-## To Do or NOT To Do
+## Team name:
++ To Do or NOT To Do
 
 ## What the code about:
 
