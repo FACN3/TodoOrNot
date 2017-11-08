@@ -1,4 +1,3 @@
-_`Amir, Neil and Idan (Checklist Research team)`_
 #### Team name:
 ## To Do or NOT To Do
 
