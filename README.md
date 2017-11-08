@@ -1,4 +1,3 @@
-# TodoOrNot
-## What the code about:
+# What the code about:
 
-# I HAVE NO IDEA
+## I HAVE NO IDEA
