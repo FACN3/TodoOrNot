@@ -89,9 +89,6 @@ test('deleting last object from existing array', function(t){
   t.end();
 });
 
-test('editing final object from existing array', function(t){
-  var actual=todoFunctions.editTodo(state,-1,editState)
-  var expected=expectedEditState
-  t.deepEqual(actual,expected, 'final object should be edited')
+
   t.end();
 });

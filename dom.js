@@ -32,19 +32,26 @@
   var createTodoNode = function (todo) {
     var todoNode = document.createElement('li');
     //add id??
-
     //add checkbox (event listener)
-    var checkbox = document.createElement('input');
-    checkbox.type ='checkbox';
-    checkbox.classList.add('checkbox');
-    todoNode.appendChild(checkbox);
+    var checkBox = document.createElement('input');
+    checkBox.type ='checkbox';
+    checkBox.id = todo.id;
+    checkBox.classList.add('checkbox');
+    checkBox.addEventListener('click', function(){
+    var newstate = todoFunctions.markTodo(state, todo.id);
+    update(newstate);
+    document.getElementById(todo.id).checked = document.getElementById(todo.id).checked ? false : true;
+  });
+    todoNode.appendChild(checkBox);
+
+
     // add title
+    var editStatus
     var nodeTitle = document.createElement('h2');
     nodeTitle.classList.add('todoTitle');
     var titleText = document.createTextNode(todo.title);
     nodeTitle.appendChild(titleText);
     todoNode.appendChild(nodeTitle);
-
 
     // add span holding description
     var addDetails = document.createElement('details');
