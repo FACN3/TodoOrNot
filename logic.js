@@ -7,7 +7,7 @@
 var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
-  generateId: (function() {
+  generateId: (function () {
     var idCounter = 0;
 
     function incrementCounter() {
@@ -19,13 +19,13 @@ var todoFunctions = {
 
   //cloneArrayOfObjects will create a copy of the todos array
   //changes to the new array don't affect the original
-  cloneArrayOfObjects: function(todos) {
-    return todos.map(function(todo) {
+  cloneArrayOfObjects: function (todos) {
+    return todos.map(function (todo) {
       return JSON.parse(JSON.stringify(todo));
     });
   },
 
-  addTodo: function(todos, newTodo) {
+  addTodo: function (todos, newTodo) {
     var todosClone = JSON.parse(JSON.stringify(todos));
     todosClone = todosClone.concat(newTodo);
     return todosClone;
@@ -34,8 +34,8 @@ var todoFunctions = {
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
   },
-  deleteTodo: function(todos, idToDelete) {
-    var filteredTodos = todos.filter(function(objs) {
+  deleteTodo: function (todos, idToDelete) {
+    var filteredTodos = todos.filter(function (objs) {
       return objs.id !== idToDelete;
     });
     return filteredTodos;
@@ -44,29 +44,23 @@ var todoFunctions = {
   // return a new array, this should not contain any todo with an id of idToDelete
   // hint: array.filter
 
-  markTodo: function(todos, idToMark) {
-    var mappedTodos = todos.map(function(x) {
-        if (x.id == idToMark) {
-          if(x.complete){
-            x.complete = false;
-          }else {
-            x.complete = true;
-          }
-          return x;
-        }
-          return x;
-        });
+  markTodo: function (todos, idToMark) {
+    var mappedTodos = todos.map(function (x) {
+      x.complete = x.id == idToMark ?
+        (x.complete ? false : true) : x;
+      return x;
+    });
     return mappedTodos;
   },
 
-  editTodo: function(todos, idToEdit, replaceObject){
+  editTodo: function (todos, idToEdit, replaceObject) {
     console.log(idToEdit)
-    var mappedTodos = todos.map(function(x) {
-        if (x.id == idToEdit) {
-          return replaceObject;
-          }
-          return x;
-        })
+    var mappedTodos = todos.map(function (x) {
+      if (x.id == idToEdit) {
+        return replaceObject;
+      }
+      return x;
+    })
     return mappedTodos;
   },
 
@@ -75,7 +69,7 @@ var todoFunctions = {
   // in the new todo array, all elements will remain unchanged except the one with id: idToMark
   // this element will have its done value toggled
   // hint: array.map
-  sortTodos: function(todos, sortFunction) {
+  sortTodos: function (todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
