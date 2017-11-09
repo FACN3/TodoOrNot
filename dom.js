@@ -6,10 +6,8 @@
   var container = document.getElementById('todo-container');
   console.log(container);
   var addTodoForm = document.getElementById('add-todo');
-  console.log(addTodoForm);
   // var editTodoForm = document.getElementsByClassName('edit-todo');
   var editTodoForm = document.getElementsByClassName('edit-todo');
-  console.log(editTodoForm)
 
 
   var state = [
@@ -103,7 +101,6 @@
       editObj={"id":todo.id,"title":document.getElementById('editTitle'+todo.id).value,
       "description":document.getElementById('editDescription'+todo.id).value,
       "complete": todo.complete}
-      console.log(editObj);
       event.preventDefault();
       var newState = todoFunctions.editTodo(state, todo.id,editObj);
       update(newState);
