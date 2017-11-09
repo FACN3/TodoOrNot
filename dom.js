@@ -37,11 +37,17 @@
     checkBox.type ='checkbox';
     checkBox.id = todo.id;
     checkBox.classList.add('checkbox');
-    checkBox.addEventListener('click', function(){
-    var newstate = todoFunctions.markTodo(state, todo.id);
-    update(newstate);
-    document.getElementById(todo.id).checked = document.getElementById(todo.id).checked ? false : true;
-  });
+    checkBox.checked  = todo.complete;
+
+    console.log('this is todo.id' + todo.id);
+    // document.getElementById(todo.id).checked = document.getElementById(todo.id).checked ? false : true;
+    checkBox.addEventListener('click', function(event){
+      event.preventDefault();
+      var newstate = todoFunctions.markTodo(state, todo.id);
+      update(newstate);
+
+    });
+
     todoNode.appendChild(checkBox);
 
 

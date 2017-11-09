@@ -19,11 +19,7 @@ var todoFunctions = {
 
   //cloneArrayOfObjects will create a copy of the todos array
   //changes to the new array don't affect the original
-  cloneArrayOfObjects: function(todos) {
-    return todos.map(function(todo) {
-      return JSON.parse(JSON.stringify(todo));
-    });
-  },
+
 
   addTodo: function(todos, newTodo) {
     var todosClone = JSON.parse(JSON.stringify(todos));
