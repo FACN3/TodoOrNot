@@ -1,1 +1,10 @@
  /**/
+
+ body {
+    background-image: url("IMG/DONTLOOK.png");
+}
+
+input[type=submit] {
+  border-radius: 50%;
+  border: 0.05rem solid black;
+}

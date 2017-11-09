@@ -40,7 +40,6 @@
 
 
     // add title
-    var editStatus
     var nodeTitle = document.createElement('h2');
     nodeTitle.classList.add('todoTitle');
     var titleText = document.createTextNode(todo.title);
