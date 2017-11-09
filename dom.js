@@ -4,6 +4,7 @@
 (function () {
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
+  console.log(container);
   var addTodoForm = document.getElementById('add-todo');
   // var editTodoForm = document.getElementsByClassName('edit-todo');
   var editTodoForm = document.getElementsByClassName('edit-todo');
@@ -43,6 +44,7 @@
 
 
     // add title
+    var editStatus
     var nodeTitle = document.createElement('h2');
     nodeTitle.classList.add('todoTitle');
     var titleText = document.createTextNode(todo.title);
@@ -54,11 +56,13 @@
     var addDescription = document.createTextNode(todo.description);
 
 
-    var editButton = document.createElement('button');
-    editButton.classList.add('editButton');
-    var editButtonText= document.createTextNode('edit');
-    editButton.appendChild(editButtonText);
+    // var editButton = document.createElement('button');
+    // editButton.classList.add('editButton');
+    // var editButtonText= document.createTextNode('edit');
+    // editButton.appendChild(editButtonText);
       //add editButton functionality
+
+
 
     var deleteButton = document.createElement('button');
     deleteButton.classList.add('deleteButton');
@@ -66,13 +70,14 @@
     deleteButton.appendChild(deleteButtonText);
     console.log(todo);
     deleteButton.addEventListener('click', function (event) {
-
+        event.preventDefault();
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
+    //add deleteButton functionality
 
     addDetails.appendChild(addDescription);
-    addDetails.appendChild(editButton);
+    // addDetails.appendChild(editButton);
     addDetails.appendChild(deleteButton);
 
     var editTodo = document.createElement('form');
@@ -105,9 +110,56 @@
     addDetails.appendChild(editTodo);
     todoNode.appendChild(addDetails);
 
+
+
+        //create event listener for button press
+        //insert new text box
+        //re write description into todo
+        // update new state with new description
+    // editButton.hidden = "true";
+    // editTodo.appendChild(editButton);
+    // todoNode.appendChild(editTodo);
+
+
+      // contains text boxx
+      // contains submit
+    // on the click of edit, replace current title and description with text box
+    // title and description in edit boxes replaces current node info
+
+
+    // this adds the delete button. PROVIDED FUNCTION
+    // var deleteButtonNode = document.createElement('button');
+    // deleteButtonNode.addEventListener('click', function (event) {
+    //   var newState = todoFunctions.deleteTodo(state, todo.id);
+    //   update(newState);
+    // });
+    // addDetails.appendChild(deleteButtonNode);
+    // add markTodo button
+    // add classes for css
     return todoNode;
   };
 
+  // if (editTodoForm) {
+  //   editTodoForm.forEach(function(form){
+  //
+  //     form.addEventListener('submit', function(event){
+  //       event.preventDefault();
+  //       var title = document.getElementById('editTitle').value;
+  //       document.getElementById('editTitle').value = '';
+  //       var description = document.getElementById('editDescription').value;
+  //       document.getElementById('editDescription').value = '';
+  //       console.log(title + description);
+  //       var newArray = {id : todo.id, title : title,
+  //         description : description, complete: todo.complete};
+  //         var newState = todoFunctions.editTodo(state,todo.id,newArray); // ?? change this!
+  //         update(newState);
+  //
+  //       });
+  //
+  //   })
+  // }
+
+  // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -119,7 +171,6 @@
       var description = document.getElementById('formDescription').value;
       document.getElementById('formDescription').value = '';
       console.log(title + description);
-
       var newArray = {id : todoFunctions.generateId(), title : title,
       description : description, complete: false};
 
@@ -148,4 +199,4 @@
   };
 
   if (container) renderState(state);
-})();
+}) ();
