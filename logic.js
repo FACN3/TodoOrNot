@@ -59,6 +59,16 @@ var todoFunctions = {
     return mappedTodos;
   },
 
+  editTodo: function(todos, idToEdit, replaceObject){
+    console.log(idToEdit)
+    var mappedTodos = todos.map(function(x) {
+        if (x.id == idToEdit) {
+          return replaceObject;
+          }
+          return x;
+        })
+    return mappedTodos;
+  },
 
 
   // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
